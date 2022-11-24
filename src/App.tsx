@@ -64,7 +64,7 @@ function App() {
       <div id="vidtop-content">
         <div className="vid-info">
           {/* <h1>Thai Twee Wee</h1> */}
-          <button onClick={Control}>▶️Play</button>
+          <button onClick={Control}>▶️ Play</button>
           <button onClick={audioToggle}>🔊 On/Off</button>
         </div>
       </div>{" "}
