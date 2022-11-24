@@ -2,6 +2,7 @@
 // import YouTube, { YouTubeProps } from "react-youtube";
 import { useEffect, useState } from "react";
 import "./App.css";
+import YouTube, { YouTubeProps } from "react-youtube";
 
 function App() {
   // const onPlayerReady: YouTubeProps["onReady"] = (event) => {
@@ -20,7 +21,19 @@ function App() {
   //     modestbranding: 1,
   //   },
   // };
+  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+    // access to player in all event handlers via event.target
+    event.target.pauseVideo();
+  };
 
+  const opts: YouTubeProps["opts"] = {
+    height: "390",
+    width: "640",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
+  };
   const [switchChannel, setSwitchChannel] = useState(false);
   const [audio, setAudio] = useState(true);
   const audioSwitchChannel = new Audio("assets\tv-zapp.mp3");
@@ -83,7 +96,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <div> </div>
+        <div></div>
       )}
     </div>
   );
