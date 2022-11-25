@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import YouTube, { YouTubeProps } from "react-youtube";
+import Plyr from "react-plyr";
 
 function App() {
   // const onPlayerReady: YouTubeProps["onReady"] = (event) => {
@@ -96,7 +97,14 @@ function App() {
           </div>
         </div>
       ) : (
-        <div></div>
+        <div>
+          {" "}
+          <Plyr
+            type="youtube" // or "vimeo"
+            videoId="CDFN1VatiJA"
+            autoplay="true"
+          />
+        </div>
       )}
     </div>
   );
