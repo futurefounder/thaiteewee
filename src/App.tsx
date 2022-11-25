@@ -101,8 +101,13 @@ function App() {
           {" "}
           <Plyr
             type="youtube" // or "vimeo"
-            videoId="CDFN1VatiJA"
+            videoId="2kAqQtLfjDI"
             autoplay="true"
+            hideControls="true"
+            muted="false"
+            volume="1"
+            disableContextMenu="true"
+            keyboard="true"
           />
         </div>
       )}
