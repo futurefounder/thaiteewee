@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import sound from "./assets/tv-zapp.mp3";
-
+import videoURLs from "./data/videos";
 import "./App.css";
 import YouTube, { YouTubeProps } from "react-youtube";
 import Plyr from "react-plyr";
@@ -28,7 +28,7 @@ function App() {
   // console.log(audioToggle);
   function Control() {
     audioSwitchChannel.muted = false;
-    audioSwitchChannel.volume = 0.3;
+    audioSwitchChannel.volume = 0.1;
     audioSwitchChannel.play();
     setSwitchChannel((prevChannel) => !prevChannel);
   }
@@ -63,7 +63,7 @@ function App() {
                 volume="1"
                 disableContextMenu="true"
                 keyboard="true"
-                seekTime={120}
+                resetOnEnd="true"
               />
               {/* </iframe> */}
             </div>
