@@ -70,19 +70,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <div>
-          {" "}
-          {/* <Plyr
-            type="youtube" // or "vimeo"
-            videoId="2kAqQtLfjDI"
-            autoplay="true"
-            hideControls="true"
-            muted="false"
-            volume="1"
-            disableContextMenu="true"
-            keyboard="true"
-          /> */}
-        </div>
+        <div></div>
       )}
     </div>
   );
