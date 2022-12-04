@@ -7,6 +7,30 @@ import Plyr from "react-plyr";
 import useSimpleAudio from "use-simple-audio";
 
 function App() {
+  // create a state variable to store the current video
+  const [currentVideo, setCurrentVideo] = useState("");
+
+  // select a random video from the list and set it as the current video
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * videoURLs.length);
+    const randomVideo = videoURLs[randomIndex];
+    setCurrentVideo(randomVideo);
+  }, []);
+
+  const preloadedPlyr = (
+    <Plyr
+      type="youtube" // or "vimeo"
+      videoId={currentVideo}
+      autoplay="true"
+      hideControls="true"
+      muted="false"
+      volume="1"
+      disableContextMenu="true"
+      keyboard="true"
+      resetOnEnd="true"
+    />
+  );
+
   const opts: YouTubeProps["opts"] = {
     height: "390",
     width: "640",
@@ -47,26 +71,7 @@ function App() {
       {switchChannel ? (
         <div>
           <div className="video-background">
-            <div className="video-foreground">
-              {/* <iframe
-                src="https://www.youtube.com/embed/2kAqQtLfjDI?start=100&controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=0"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              > */}
-              <Plyr
-                type="youtube" // or "vimeo"
-                videoId="2kAqQtLfjDI"
-                autoplay="true"
-                hideControls="true"
-                muted="false"
-                volume="1"
-                disableContextMenu="true"
-                keyboard="true"
-                resetOnEnd="true"
-              />
-              {/* </iframe> */}
-            </div>
+            <div className="video-foreground">{preloadedPlyr}</div>
           </div>
         </div>
       ) : (
