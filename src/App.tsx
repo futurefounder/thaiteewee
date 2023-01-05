@@ -21,13 +21,15 @@ function App() {
     <Plyr
       type="youtube" // or "vimeo"
       videoId={currentVideo}
+      preload="auto"
       autoplay="true"
       hideControls="true"
-      muted="false"
-      volume="1"
+      muted="true"
+      volume="0"
       disableContextMenu="true"
       keyboard="true"
       resetOnEnd="true"
+      setVolume="0"
     />
   );
 
@@ -40,20 +42,31 @@ function App() {
     },
   };
   const [switchChannel, setSwitchChannel] = useState(false);
-  const [audio, setAudio] = useState(true);
+  const [audio, setAudio] = useState();
   const audioSwitchChannel = new Audio(sound);
 
   audioSwitchChannel.load();
-  audioSwitchChannel.muted = true;
+  audioSwitchChannel.muted = false;
 
   function audioToggle() {
-    console.log("audio toggle");
+    setAudio((prevAudio) => {
+      if (!prevAudio) {
+        audioSwitchChannel.pause();
+      }
+      return !prevAudio;
+    });
   }
   // console.log(audioToggle);
   function Control() {
-    audioSwitchChannel.muted = false;
-    audioSwitchChannel.volume = 0.1;
-    audioSwitchChannel.play();
+    // Set the random video as the current video
+    const randomIndex = Math.floor(Math.random() * videoURLs.length);
+    const randomVideo = videoURLs[randomIndex];
+    setCurrentVideo(randomVideo);
+    if (audio) {
+      audioSwitchChannel.muted = false;
+      audioSwitchChannel.volume = 0.1;
+      audioSwitchChannel.play();
+    }
     setSwitchChannel((prevChannel) => !prevChannel);
   }
 
@@ -62,9 +75,9 @@ function App() {
       {" "}
       <div id="vidtop-content">
         <div className="vid-info">
-          <h2>🛺📺 Thai Twee Wee</h2>
-          <button onClick={Control}>▶️ Play</button>
-          <button onClick={audioToggle}>🔊 On/Off</button>
+          <h2>🛺📺 Thai Tee Wee</h2>
+          <button onClick={Control}>▶️ Switch</button>
+          <button onClick={audioToggle}>🔊 {audio ? "🟢 On" : "🔴 Off"}</button>
         </div>
       </div>{" "}
       {/* <YouTube videoId="Svgy6jrrcF4" opts={opts} onReady={onPlayerReady} /> */}
