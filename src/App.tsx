@@ -1,12 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import sound from "./assets/tv-zapp.mp3";
 import videoURLs from "./data/videos";
 import "./App.css";
 import YouTube, { YouTubeProps } from "react-youtube";
 import Plyr from "react-plyr";
+// import "plyr-react/plyr.css";
 import useSimpleAudio from "use-simple-audio";
 
 function App() {
+  // set Plyr component video options
+  const videoOptions = { muted: true, volume: 0 };
+
+  const ref = useRef();
+
   // create a state variable to store the current video
   const [currentVideo, setCurrentVideo] = useState("");
 
@@ -15,32 +21,31 @@ function App() {
     const randomIndex = Math.floor(Math.random() * videoURLs.length);
     const randomVideo = videoURLs[randomIndex];
     setCurrentVideo(randomVideo);
+    // console.log("internal plyr instance:", ref.current.plyr);
   }, []);
 
   const preloadedPlyr = (
     <Plyr
+      // ref={ref}
       type="youtube" // or "vimeo"
       videoId={currentVideo}
       preload="auto"
       autoplay="true"
-      hideControls="true"
-      muted="true"
-      volume="0"
       disableContextMenu="true"
       keyboard="true"
       resetOnEnd="true"
-      setVolume="0"
+      // options={{ muted: true, volume: 0 }}
     />
   );
 
-  const opts: YouTubeProps["opts"] = {
-    height: "390",
-    width: "640",
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-  };
+  // const opts: YouTubeProps["opts"] = {
+  //   height: "390",
+  //   width: "640",
+  //   playerVars: {
+  //     // https://developers.google.com/youtube/player_parameters
+  //     autoplay: 1,
+  //   },
+  // };
   const [switchChannel, setSwitchChannel] = useState(false);
   const [audio, setAudio] = useState();
   const audioSwitchChannel = new Audio(sound);
@@ -70,13 +75,21 @@ function App() {
     setSwitchChannel((prevChannel) => !prevChannel);
   }
 
+  console.log(window.localStorage.getItem("plyr"));
+  window.localStorage.setItem("plyr", JSON.stringify(videoOptions));
   return (
     <div className="App">
       {" "}
       <div id="vidtop-content">
         <div className="vid-info">
-          <h2>🛺📺 Thai Tee Wee</h2>
-          <button onClick={Control}>▶️ Switch</button>
+          <h2>📺 Thai Tee Wee</h2>
+          <button onClick={Control}>👶 Beginner</button>&nbsp;
+          <button onClick={Control}>👩🏻‍🏫 Intermediate</button>&nbsp;
+          <button onClick={Control}>😄 Native</button>
+          <br />
+          <br />
+          <button onClick={Control}>🎲 Random</button>&nbsp; <br />
+          <br />
           <button onClick={audioToggle}>🔊 {audio ? "🟢 On" : "🔴 Off"}</button>
         </div>
       </div>{" "}
