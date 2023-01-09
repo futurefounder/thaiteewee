@@ -24,17 +24,22 @@ function App() {
     // console.log("internal plyr instance:", ref.current.plyr);
   }, []);
 
+  const plyrProps = {
+    options: autoplay : false, // https://github.com/sampotts/plyr#options
+    // Direct props for inner video tag (mdn.io/video)
+  }
+
   const preloadedPlyr = (
     <Plyr
       // ref={ref}
-      type="youtube" // or "vimeo"
+      type="youtube"
       videoId={currentVideo}
       preload="auto"
-      autoplay="true"
+      autoplay="false"
       disableContextMenu="true"
       keyboard="true"
       resetOnEnd="true"
-      // options={{ muted: true, volume: 0 }}
+      options={{ muted: true, volume: 0 }}
     />
   );
 
@@ -62,11 +67,17 @@ function App() {
     });
   }
   // console.log(audioToggle);
-  function Control() {
+  function Control(type: string) {
+    // Filter the videoURLs array to get only the videos with the specified type
+    const filteredVideos = videoURLs.filter(
+      (video: { type: any }) => video.type === type
+    );
+    // Select a random video from the filtered array
+    const randomIndex = Math.floor(Math.random() * filteredVideos.length);
+    const randomVideo = filteredVideos[randomIndex];
     // Set the random video as the current video
-    const randomIndex = Math.floor(Math.random() * videoURLs.length);
-    const randomVideo = videoURLs[randomIndex];
-    setCurrentVideo(randomVideo);
+    setCurrentVideo(randomVideo.id);
+    console.log(randomVideo.id);
     if (audio) {
       audioSwitchChannel.muted = false;
       audioSwitchChannel.volume = 0.1;
@@ -75,7 +86,7 @@ function App() {
     setSwitchChannel((prevChannel) => !prevChannel);
   }
 
-  console.log(window.localStorage.getItem("plyr"));
+  // console.log(window.localStorage.getItem("plyr"));
   window.localStorage.setItem("plyr", JSON.stringify(videoOptions));
   return (
     <div className="App">
@@ -83,9 +94,9 @@ function App() {
       <div id="vidtop-content">
         <div className="vid-info">
           <h2>📺 Thai Tee Wee</h2>
-          <button onClick={Control}>👶 Beginner</button>&nbsp;
-          <button onClick={Control}>👩🏻‍🏫 Intermediate</button>&nbsp;
-          <button onClick={Control}>😄 Native</button>
+          <button onClick={() => Control("beginner")}>👶 Beginner</button>&nbsp;
+          <button onClick={() => Control("intermediate")}> 👩🏻‍🏫 Intermediate </button> &nbsp;
+          <button onClick={() => Control("native")}>😄 Native</button>
           <br />
           <br />
           <button onClick={Control}>🎲 Random</button>&nbsp; <br />

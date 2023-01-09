@@ -1,126 +1,62 @@
 export const videoURLs = [
   {
-    id: "",
-    type: "",
-    title: "",
+    id: "vcWPJw8Wsho",
+    type: "native",
+    title: "Gapthanavate - CPK75 House",
   },
   {
-    id: "",
-    type: "",
-    title: "",
+    id: "RCDrE7XJ40s",
+    type: "native",
+    title: "AmericanThaiGuy - Interview Nong Udom",
   },
   {
-    id: "",
-    type: "",
-    title: "",
+    id: "AiQZKd29u3M",
+    type: "native",
+    title: "WorkpointOfficial - Stars Chef Thailand Ep 8",
   },
   {
-    id: "",
-    type: "",
-    title: "",
+    id: "nWvKWYwFsU8",
+    type: "intermediate",
+    title: "Comprehensible Thai - Book or Film",
   },
   {
-    id: "",
-    type: "",
-    title: "",
+    id: "WV5t9hRmffk",
+    type: "intermediate",
+    title: "Understand Thai - New Year's resolutions",
   },
   {
-    id: "",
-    type: "",
-    title: "",
+    id: "1Tk-x5KHJFI",
+    type: "intermediate",
+    title: "Happy Joe - Alphabet Song",
   },
   {
-    id: "",
-    type: "",
-    title: "",
+    id: "aNdYdSpL6zE",
+    type: "beginner",
+    title: "Comprehensible Thai - Learn Thai Beginner 1a",
   },
   {
-    id: "",
-    type: "",
-    title: "",
+    id: "ozXkKQujA6I",
+    type: "beginner",
+    title: "Thai with Mod - 20 Basic Phrases",
   },
   {
-    id: "",
-    type: "",
-    title: "",
+    id: "eCFjFyjLpKU",
+    type: "beginner",
+    title: "BananaThai - 30 common Thai Verbs",
   },
-  {
-    id: "",
-    type: "",
-    title: "",
-  },
-  {
-    id: "",
-    type: "",
-    title: "",
-  },
-  "vcWPJw8Wsho",
-  "RCDrE7XJ40s",
-  "AiQZKd29u3M",
-  "2kAqQtLfjDI",
-  "5BotGqMjUmw",
-  "n387VOtoadI",
-  "yEewC0EO7jg",
-  "Y8QYXe4IvhE",
-  "AEabMnmax8c",
-  "d4d6kBjTrjM",
-  "16iAJludv7s",
-  "W-l9SwPmDJU",
-  "qD7wOO0z0iY",
-  "1z6-hHejO2Y",
+  // "RCDrE7XJ40s",
+  // "AiQZKd29u3M",
+  // "2kAqQtLfjDI",
+  // "5BotGqMjUmw",
+  // "n387VOtoadI",
+  // "yEewC0EO7jg",
+  // "Y8QYXe4IvhE",
+  // "AEabMnmax8c",
+  // "d4d6kBjTrjM",
+  // "16iAJludv7s",
+  // "W-l9SwPmDJU",
+  // "qD7wOO0z0iY",
+  // "1z6-hHejO2Y",
 ];
 
 export default videoURLs;
-
-// export const videoURLs = [
-//   {
-//     id: "vcWPJw8Wsho",
-//     type: "comedy",
-//     title: "Funny Cats Compilation",
-//   },
-//   {
-//     id: "RCDrE7XJ40s",
-//     type: "drama",
-//     title: "The Shawshank Redemption",
-//   },
-//   {
-//     id: "AiQZKd29u3M",
-//     type: "comedy",
-//     title: "The Hangover",
-//   },
-//   // ...
-// ];
-
-// export default videoURLs;
-
-// import { useState } from 'react';
-
-// function MyComponent() {
-//   const [videoType, setVideoType] = useState('all');
-//   const [videos, setVideos] = useState([]);
-
-//   function handleButtonClick(event) {
-//     const newVideoType = event.target.value;
-//     setVideoType(newVideoType);
-//   }
-
-//   function filterVideos() {
-//     if (videoType === 'all') {
-//       return videos;
-//     }
-//     return videos.filter((video) => video.type === videoType);
-//   }
-
-//   return (
-//     <div>
-//       <button value="comedy" onClick={handleButtonClick}>Comedy</button>
-//       <button value="drama" onClick={handleButtonClick}>Drama</button>
-//       <button value="all" onClick={handleButtonClick}>All</button>
-//       <ul>
-//         {filterVideos().map((video) => (
-//           <li key={video.id}>{video.title}</li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
